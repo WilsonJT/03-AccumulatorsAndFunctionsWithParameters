@@ -123,7 +123,7 @@ def sum_powers_in_range(m, n, p):
         m = -m
     if n < 0:
         n = -n
-    for i in range(0, n + 1):
+    for i in range(0, n):
         k = m + i
         r = k ** p
         total += r
