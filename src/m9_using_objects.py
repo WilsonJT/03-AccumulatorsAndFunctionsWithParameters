@@ -5,8 +5,8 @@ This module lets you practice  ** using objects **, including:
   -- accessing their DATA via INSTANCE VARIABLES
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Aaron Wilkin, their colleagues, and Jack Wilson.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -14,6 +14,9 @@ import rosegraphics as rg
 def main():
     """ Calls the other functions to demonstrate and/or test them. """
     # Test your functions by putting calls to them here:
+    two_circles()
+    circle_and_rectangle()
+    lines()
 
 
 def two_circles():
@@ -27,12 +30,22 @@ def two_circles():
     -- Waits for the user to press the mouse, then closes the window.
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this function, per its green doc-string above.
+    # DONE: 2. Implement this function, per its green doc-string above.
     #    -- ANY two rg.Circle objects that meet the criteria are fine.
     #    -- File  COLORS.pdf  lists all legal color-names.
     # Put a statement in   main   to test this function
     #    (by calling this function).
     # -------------------------------------------------------------------------
+    window = rg.RoseWindow(400, 400)
+    point1 = rg.Point(100, 300)
+    point2 = rg.Point(250, 150)
+    circle1 = rg.Circle(point1, 50)
+    circle2 = rg.Circle(point2, 100)
+    circle2.fill_color = 'blue'
+    circle1.attach_to(window)
+    circle2.attach_to(window)
+    window.render()
+    window.close_on_mouse_click()
 
 
 def circle_and_rectangle():
@@ -67,7 +80,7 @@ def circle_and_rectangle():
            150.0
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this function, per its green doc-string above.
+    # DONE: 3. Implement this function, per its green doc-string above.
     #   -- ANY objects that meet the criteria are fine.
     # Put a statement in   main   to test this function
     #    (by calling this function).
@@ -75,6 +88,40 @@ def circle_and_rectangle():
     # IMPORTANT: Use the DOT TRICK to guess the names of the relevant
     #       instance variables for outline thickness, etc.
     # -------------------------------------------------------------------------
+    window = rg.RoseWindow(400, 400)
+    thickness = 1
+    x = 100
+    y = 150
+    radius = 90
+    center = rg.Point(x, y)
+    circle = rg.Circle(center, radius)
+    fill = 'blue'
+    circle.fill_color('blue')
+    c1x = 300
+    c1y = 100
+    c2x = 350
+    c2y = 370
+    corner1 = rg.Point(c1x, c1y)
+    corner2 = rg.Point(c2x, c2y)
+    rectangle = rg.Rectangle(corner1, corner2)
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    print('      Circle specs')
+    print(' Thickness:', thickness)
+    print('    Radius:', radius)
+    print('    Center:', center)
+    print('  Center x:', x)
+    print('  Center y:', y)
+    print('Fill color:', fill)
+
+    print('Rectangle specs')
+    print(' Thickness:', thickness)
+    print('    Length:', c2x - c1x)
+    print('     Width:', c2y - c1y)
+    print('      Fill: none')
+    print('   Corners:', corner1, corner2)
+    window.render()
+    window.close_on_mouse_click()
 
 
 def lines():
@@ -99,10 +146,26 @@ def lines():
 
     -- Waits for the user to press the mouse, then closes the window.
     """
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
 
+
+window = rg.RoseWindow()
+line1 = rg.Line(rg.Point(50, 50), rg.Point(350, 50))
+line2 = rg.Line(rg.Point(100, 100), rg.Point(121, 200))
+line2.thickness = 20
+line1.attach_to(window)
+line2.attach_to(window)
+m = line2.get_midpoint()
+print(m)
+print(m.x)
+print(m.y)
+window.render()
+window.close_on_mouse_click()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
+
+
 main()
+
